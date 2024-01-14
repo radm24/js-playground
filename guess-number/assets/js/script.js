@@ -119,6 +119,8 @@
 
   function stopSound() {
     document.querySelector('#win-sound').pause();
+    document.querySelector('#win-sound').currentTime = 0;
     document.querySelector('#loss-sound').pause();
+    document.querySelector('#loss-sound').currentTime = 0;
   }
 })();
