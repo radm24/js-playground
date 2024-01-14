@@ -14,13 +14,13 @@
   const scoreTwoEl = getElBySelector('#score--1');
   const currentScoreOneEl = getElBySelector('#current--0');
   const currentScoreTwoEl = getElBySelector('#current--1');
+  const soundOne = getElBySelector('#sound--0');
+  const soundTwo = getElBySelector('#sound--1');
 
   const diceEl = getElBySelector('.dice');
   const btnNewGame = getElBySelector('.btn--new');
   const btnRollDice = getElBySelector('.btn--roll');
   const btnHold = getElBySelector('.btn--hold');
-
-  const winSound = getElBySelector('#win-sound');
 
   const setGameBtnsDisabled = (disabled) => {
     btnRollDice.toggleAttribute('disabled', disabled);
@@ -33,9 +33,11 @@
 
   const init = () => {
     // Start a new game
-    if (winSound.currentTime > 0) {
-      winSound.pause();
-      winSound.currentTime = 0;
+    if (soundOne.currentTime > 0 || soundTwo.currentTime > 0) {
+      soundOne.pause();
+      soundOne.currentTime = 0;
+      soundTwo.pause();
+      soundTwo.currentTime = 0;
     }
     setGameBtnsDisabled(false);
 
@@ -101,7 +103,7 @@
         diceEl.classList.add('hidden');
         getElBySelector(`.player--${activePlayer}`).classList.add('player--winner');
         getElBySelector(`.player--${activePlayer}`).classList.remove('player--active');
-        winSound.play();
+        getElBySelector(`#sound--${activePlayer}`).play();
       } else {
         // Switch to the next player
         switchPlayers();
