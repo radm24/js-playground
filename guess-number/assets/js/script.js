@@ -36,8 +36,8 @@
       document.body.style.backgroundColor = '#222';
       document.querySelector('.number').textContent = '?';
       document.querySelector('.number').style.width = '15rem';
-      setEnabled('.guess');
-      setEnabled('.check');
+      setDisabled('.guess', false);
+      setDisabled('.check', false);
     }
   }
 
@@ -75,16 +75,12 @@
   }
 
   function stopGame() {
-    setDisabled('.guess');
-    setDisabled('.check');
+    setDisabled('.guess', true);
+    setDisabled('.check', true);
   }
 
-  function setDisabled(elClass) {
-    document.querySelector(elClass).setAttribute('disabled', true);
-  }
-
-  function setEnabled(elClass) {
-    document.querySelector(elClass).removeAttribute('disabled');
+  function setDisabled(elClass, disable) {
+    document.querySelector(elClass).toggleAttribute('disabled', disable);
   }
 
   function checkHighscore() {
