@@ -3,7 +3,9 @@
 (function quoteGenerator() {
   let apiQuotes = [];
   let quoteNumber = 0;
+  // Quotes quantity per request
   const quotesLimit = 50;
+  // Fallback quote in the case if api request will be failed
   const fallbackQuote = {
     quote: 'You must be the change you wish to see in the world.',
     author: 'Mahatma Gandhi',
@@ -20,27 +22,29 @@
   const newQuoteBtn = getElBySelector('#new-quote');
   const loader = getElBySelector('#loader');
 
+  // Show loader
   const loading = () => {
     loader.hidden = false;
     quoteContainer.hidden = true;
   };
 
+  // Hide loader
   const complete = () => {
     loader.hidden = true;
     quoteContainer.hidden = false;
   };
 
-  const printQuote = (quote) => {
+  const printQuote = ({ quote, author }) => {
     loading();
-    const quoteLen = quote['quote'].length;
+    const quoteLen = quote.length;
     // Reduce font size for long quotes
     if (quoteLen > 120) {
       quoteText.classList.add('long-quote');
     } else {
       quoteText.classList.remove('long-quote');
     }
-    quoteText.textContent = quote.quote;
-    authorText.textContent = quote.author;
+    quoteText.textContent = quote;
+    authorText.textContent = author;
     complete();
   };
 
