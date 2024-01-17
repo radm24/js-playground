@@ -1,7 +1,7 @@
 'use strict';
 
 (function quoteGenerator() {
-  let apiQuotes = [];
+  let apiQuotes;
   let quoteNumber = 0;
   // Quotes quantity per request
   const quotesLimit = 50;
