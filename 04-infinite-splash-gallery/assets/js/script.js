@@ -39,7 +39,7 @@
       img.src = photo.urls.regular;
       img.alt = photo.alt_description;
       img.title = photo.alt_description;
-      img.addEventListener('load', imageLoaded);
+      img.addEventListener('load', imageLoaded, { once: true });
       // Put <a> and <img> inside imageContainer element
       a.appendChild(img);
       imageContainer.appendChild(a);
