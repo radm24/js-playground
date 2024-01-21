@@ -1,6 +1,6 @@
 'use strict';
 
-(function pictureInPicture() {
+(function jokeTeller() {
   const button = document.querySelector('#button');
   const audioEl = document.querySelector('#audio');
 
@@ -14,7 +14,7 @@
       key: 'APIKEY',
       src: joke,
       hl: 'en-us',
-      v: 'Linda',
+      v: 'Mary',
       r: 0,
       c: 'mp3',
       f: '44khz_16bit_stereo',
@@ -27,6 +27,8 @@
   const getJokes = async () => {
     const apiUrl =
       'https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
+    // Disable button
+    toggleButton();
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
@@ -36,10 +38,10 @@
         : data.joke;
       // Pass joke string to Voice RSS API
       tellJoke(joke);
-      // Disable button
-      toggleButton();
     } catch (err) {
       console.log(`Error: ${err}`);
+      // Enable button
+      toggleButton();
     }
   };
 
