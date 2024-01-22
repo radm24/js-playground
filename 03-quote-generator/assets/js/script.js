@@ -53,14 +53,7 @@
     // Total: 1454 quotes
     const skip = Math.floor(Math.random() * 1405);
     const apiUrl = `https://dummyjson.com/quotes?limit=${quotesLimit}&skip=${skip}`;
-    const options = {
-      mode: 'cors',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    fetch(apiUrl, options)
+    fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
         apiQuotes = data.quotes;
