@@ -10,8 +10,91 @@
   </head>
   <body>
     <div class="container">
-      <button id="button">Tell Me A Joke</button>
-      <audio class="audio" id="audio" controls hidden></audio>
+      <div class="settings-container">
+        <button class="settings-button" id="settings-button">
+          <img src="./assets/img/cogwheel.png" alt="Cogwheel Icon" />
+        </button>
+
+        <div>
+          <div class="settings" id="settings-en">
+            <p class="settings--option-heading" id="lang-label">Language:</p>
+            <div class="settings--option-item">
+              <input type="radio" name="lang" id="lang-en" value="en" checked />
+              <label for="lang-en">
+                <img
+                  src="./assets/img/english.png"
+                  class="settings--option-img"
+                  alt="Settings: English language"
+                />
+              </label>
+            </div>
+            <div class="settings--option-item">
+              <input type="radio" name="lang" id="lang-ru" value="ru" />
+              <label for="lang-ru">
+                <img
+                  src="./assets/img/russia.png"
+                  class="settings--option-img"
+                  alt="Settings: Russian language"
+                />
+              </label>
+            </div>
+
+            <p class="settings--option-heading" id="voice-label">Voice:</p>
+            <div class="settings--option-item">
+              <input
+                type="radio"
+                name="voice"
+                id="voice-male"
+                value="male"
+                checked
+              />
+              <label for="voice-male">
+                <img
+                  src="./assets/img/man.png"
+                  class="settings--option-img"
+                  alt="Settings: Male voice"
+                />
+              </label>
+            </div>
+            <div class="settings--option-item">
+              <input
+                type="radio"
+                name="voice"
+                id="voice-female"
+                value="female"
+              />
+              <label for="voice-female">
+                <img
+                  src="./assets/img/woman.png"
+                  class="settings--option-img"
+                  alt="Settings: Female voice"
+                />
+              </label>
+            </div>
+
+            <p class="settings--option-heading" id="filter-label">Filter:</p>
+            <div class="settings--option-item">
+              <input type="checkbox" name="filter" id="filter" checked />
+              <label for="filter">
+                <img
+                  src="./assets/img/filter-en.png"
+                  class="settings--option-img filter-img"
+                  id="filter-icon"
+                  alt="Settings: Safe jokes"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="robot-container">
+        <div class="robot">
+          <img src="./assets/img/robot.gif" alt="Robot holds popcorn bucket" />
+          <button class="joke-button" id="joke-button">Tell Me A Joke</button>
+        </div>
+        <audio class="audio" id="audio" controls hidden></audio>
+      </div>
     </div>
 
     <script src="./assets/js/script.js"></script>
