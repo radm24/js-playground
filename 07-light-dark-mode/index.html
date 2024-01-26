@@ -6,15 +6,15 @@
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
     <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <title>Light - Dark Mode</title>
+    <title>Light / Dark Mode</title>
   </head>
   <body>
     <header class="header">
-      <nav id="nav">
-        <a href="#home">AHOY</a>
-        <a href="#schedule">SCHEDULE</a>
-        <a href="#hall-of-fame">HALL OF FAME</a>
-        <a href="#attributes">ATTRIBUTES</a>
+      <nav class="nav" id="nav">
+        <a class="nav-link" href="#home">AHOY</a>
+        <a class="nav-link" href="#schedule">SCHEDULE</a>
+        <a class="nav-link" href="#hall-of-fame">HALL OF FAME</a>
+        <a class="nav-link" href="#attributes">ATTRIBUTES</a>
       </nav>
 
       <div class="theme-switch-wrapper">
@@ -47,13 +47,13 @@
         </div>
         <label class="theme-switch" id="theme-switch">
           <input type="checkbox" />
-          <div class="slider round"></div>
+          <span class="slider round"></span>
         </label>
       </div>
     </header>
 
     <section id="home">
-      <div class="title-group">
+      <div class="home-title">
         <h1>Skulledanya</h1>
         <h2>Ahoy, matey, yo-ho-ho!</h2>
       </div>
@@ -62,7 +62,7 @@
     <section id="schedule">
       <h1>Pirates' Daily Schedule</h1>
       <div class="schedule-container">
-        <div class="image-container">
+        <div class="schedule-item">
           <h2>Raise The Sails</h2>
           <img
             src="./assets/img/undraw_yacht_light.svg"
@@ -70,7 +70,7 @@
             id="image1"
           />
         </div>
-        <div class="image-container">
+        <div class="schedule-item">
           <h2>Seek Treasures</h2>
           <img
             src="./assets/img/undraw_map_light.svg"
@@ -78,7 +78,7 @@
             id="image2"
           />
         </div>
-        <div class="image-container">
+        <div class="schedule-item">
           <h2>Celebrate</h2>
           <img
             src="./assets/img/undraw_beer_light.svg"
@@ -91,7 +91,7 @@
 
     <section id="hall-of-fame">
       <h1>Hall of Fame</h1>
-      <div class="buttons">
+      <div class="buttons-container">
         <button class="primary">Blackbeard</button>
         <button class="secondary">Henry Morgan</button>
         <button class="primary" disabled>Captain Kidd</button>
