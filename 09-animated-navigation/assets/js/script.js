@@ -15,11 +15,11 @@
     navListItems.forEach((item, idx) => {
       item.classList.toggle(`slide-in-${idx + 1}`);
       item.classList.toggle(`slide-out-${idx + 1}`);
-    })
-  }
+    });
+  };
 
   menuIcon.addEventListener('click', toggleNav);
-  navListLinks.forEach(link => {
+  navListLinks.forEach((link) => {
     link.addEventListener('click', toggleNav);
-  })
+  });
 })();

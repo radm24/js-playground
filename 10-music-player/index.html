@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="./assets/css/font-awesome-5.10.2-all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Music Player</title>
+  </head>
+  <body>
+    <!-- Player -->
+    <div class="player-container">
+      <!-- Song -->
+      <div class="song-container">
+        <div class="img-container">
+          <img src="./assets/img/placeholder.jpg" alt="Album Art" />
+        </div>
+        <h2 class="song-title" id="title">Song</h2>
+        <h3 class="artist-name" id="artist">Artist</h3>
+        <audio src="./assets/music/placeholder.mp3"></audio>
+      </div>
+      <!-- Progress -->
+      <div class="progress-container" id="progress-container">
+        <div class="progress" id="progress"></div>
+        <div class="duration-wrapper">
+          <span id="current-time">0:00</span>
+          <span id="duration">2:00</span>
+        </div>
+      </div>
+      <!-- Controls -->
+      <div class="player-controls">
+        <i class="fas fa-backward" id="prev" title="Previous"></i>
+        <i class="fas fa-play main-button" id="play" title="Play"></i>
+        <i class="fas fa-forward" id="next" title="Next"></i>
+      </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
