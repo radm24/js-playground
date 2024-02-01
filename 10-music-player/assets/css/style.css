@@ -41,6 +41,7 @@ body {
   height: 30rem;
   position: relative;
   top: -5rem;
+  user-select: none;
 }
 
 .img-container img {
@@ -73,10 +74,9 @@ body {
 
 .progress {
   height: 100%;
+  width: 0%;
   background-color: #242323;
   border-radius: 5px;
-  /* change this to show progress */
-  width: 0%;
   transition: width 0.1s linear;
 }
 
@@ -99,6 +99,13 @@ body {
 .fas {
   font-size: 3rem;
   color: rgb(129, 129, 129);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.fas:hover {
+  filter: brightness(80%);
 }
 
 .main-button {

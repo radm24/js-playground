@@ -15,21 +15,25 @@
   <body>
     <!-- Player -->
     <div class="player-container">
-      <!-- Song -->
+      <!-- Track -->
       <div class="song-container">
         <div class="img-container">
-          <img src="./assets/img/placeholder.jpg" alt="Album Art" />
+          <img
+            id="cover-art"
+            src="./assets/img/track1.jpg"
+            alt="Album Cover Art"
+          />
         </div>
-        <h2 class="song-title" id="title">Song</h2>
-        <h3 class="artist-name" id="artist">Artist</h3>
-        <audio src="./assets/music/placeholder.mp3"></audio>
+        <h2 class="song-title" id="title">Forlorn Craving</h2>
+        <h3 class="artist-name" id="artist">Ron Gelinas Chill Beats</h3>
+        <audio id="audio" src="./assets/music/track1.mp3"></audio>
       </div>
       <!-- Progress -->
       <div class="progress-container" id="progress-container">
         <div class="progress" id="progress"></div>
         <div class="duration-wrapper">
           <span id="current-time">0:00</span>
-          <span id="duration">2:00</span>
+          <span id="duration">3:07</span>
         </div>
       </div>
       <!-- Controls -->
