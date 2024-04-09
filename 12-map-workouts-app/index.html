@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Leaflet.js -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <!-- Leaflet.draw plugin -->
+    <link
+      rel="stylesheet"
+      href="./assets/libs/leaflet.draw/0.4.2/leaflet.draw.css"
+    />
+    <script
+      defer
+      src="./assets/libs/leaflet.draw/0.4.2/leaflet.draw.js"
+    ></script>
+
+    <script defer src="./assets/js/script.js"></script>
+    <title>mapyl // Map your workouts</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <img src="./assets/img/logo.png" alt="Logo" class="logo" />
+
+      <ul class="workouts">
+        <form class="form hidden">
+          <div class="form__row">
+            <label class="form__label">Type</label>
+            <select class="form__input form__input--type">
+              <option value="running">Running</option>
+              <option value="cycling">Cycling</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <label class="form__label">Distance</label>
+            <input class="form__input form__input--distance" placeholder="km" />
+          </div>
+          <div class="form__row">
+            <label class="form__label">Duration</label>
+            <input
+              class="form__input form__input--duration"
+              placeholder="min"
+            />
+          </div>
+          <div class="form__row">
+            <label class="form__label">Cadence</label>
+            <input
+              class="form__input form__input--cadence"
+              placeholder="step/min"
+            />
+          </div>
+          <div class="form__row form__row--hidden">
+            <label class="form__label">Elev Gain</label>
+            <input
+              class="form__input form__input--elevation"
+              placeholder="meters"
+            />
+          </div>
+          <button class="form__btn">OK</button>
+          <div class="form__message form__message--hidden">
+            <p>Inputs have to be positive numbers!</p>
+          </div>
+        </form>
+      </ul>
+
+      <div class="buttons">
+        <span class="buttons__label--sort"> SORT BY </span>
+        <select class="buttons__input buttons__input--sort">
+          <option value="date">Date</option>
+          <option value="type">Type</option>
+          <option value="distance">Distance</option>
+          <option value="duration">Duration</option>
+          <option value="pace/speed">Pace / Speed</option>
+          <option value="cadence/elevationGain">
+            Cadence / Elevation gain
+          </option>
+        </select>
+        <button class="buttons__btn buttons__btn--clear">CLEAR ALL</button>
+      </div>
+    </div>
+
+    <div id="map"></div>
+  </body>
+</html>
