@@ -19,9 +19,11 @@
   class Workout {
     date = new Date();
     id = (Date.now() + '').slice(-10);
+    location;
+    temperature;
 
     constructor(coords, distance, duration) {
-      this.coords = coords; // [ [lat, lng], [lat, lng], ]
+      this.coords = coords; // [ {lat, lng}, {lat, lng} ]
       this.distance = distance; // km
       this.duration = duration; // min
     }
@@ -33,6 +35,41 @@
       this.description = `${
         this.type[0].toUpperCase() + this.type.slice(1)
       } on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
+    }
+
+    async setWorkoutLocationAndWeather() {
+      try {
+        // BigDataCloud API
+        const GEOCODE_URL =
+          'https://api.bigdatacloud.net/data/reverse-geocode-client';
+
+        // Open Meteo API
+        const WEATHER_URL = 'https://api.open-meteo.com/v1/forecast';
+
+        const { lat, lng } = this.coords[0];
+        const geocodeURL = `${GEOCODE_URL}?&latitude=${lat}&longitude=${lng}`;
+        const weatherURL = `${WEATHER_URL}?latitude=${lat}&longitude=${lng}&current=temperature_2m`;
+
+        const [geocodeRes, weatherRes] = await Promise.all([
+          fetch(geocodeURL),
+          fetch(weatherURL),
+        ]);
+
+        if (geocodeRes.ok) {
+          const data = await geocodeRes.json();
+          this.location = data.city;
+        }
+
+        if (weatherRes.ok) {
+          const weatherData = await weatherRes.json();
+
+          const temperatureValue = weatherData.current.temperature_2m;
+          const temperatureUnit = weatherData.current_units.temperature_2m;
+          this.temperature = temperatureValue.toFixed() + temperatureUnit;
+        }
+      } catch (err) {
+        throw err;
+      }
     }
   }
 
@@ -332,29 +369,36 @@
       }
     }
 
-    #newWorkout(data) {
-      // If workout is running, create running object
-      // If workout is cycling, create cycling object
-      const workout = new (data.type === 'running' ? Running : Cycling)(
-        this.#newWorkoutCoords,
-        data
-      );
-      this.#newWorkoutCoords = null;
+    async #newWorkout(data) {
+      try {
+        // If workout is running, create running object
+        // If workout is cycling, create cycling object
+        const workout = new (data.type === 'running' ? Running : Cycling)(
+          this.#newWorkoutCoords,
+          data
+        );
+        this.#newWorkoutCoords = null;
 
-      // Add new workout to workouts array
-      this.#workouts.push(workout);
+        // Set workout location and weather temperature
+        await workout.setWorkoutLocationAndWeather();
 
-      // Render workout path and marker on the map
-      this.#renderWorkoutMarker(workout, true);
+        // Add new workout to workouts array
+        this.#workouts.push(workout);
 
-      // Render workout entry on UI list
-      this.#renderWorkout(workout);
+        // Render workout path and marker on the map
+        this.#renderWorkoutMarker(workout, true);
 
-      // Hide form and clear input fields
-      this.#hideForm();
+        // Render workout entry on UI list
+        this.#renderWorkout(workout);
 
-      // Save workouts array to local storage
-      this.#setLocalStorage();
+        // Hide form and clear input fields
+        this.#hideForm();
+
+        // Save workouts array to local storage
+        this.#setLocalStorage();
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     #editWorkoutSaving(data) {
@@ -432,73 +476,85 @@
       cadence,
       speed,
       elevationGain,
+      location,
+      temperature,
     }) {
       let html = `
-      <li class="workout workout--${type}" data-id="${id}">
-        <div class="workout__title">
-          <p>${description}</p>
-        </div>
-        <div class="workout__controls">
-          <span class="workout__controls--option" data-action="edit">📝</span>
-          <span class="workout__controls--option" data-action="delete">🧺</span>
-        </div>
-        <div class="workout__details">
-          <span class="workout__icon">${type === 'running' ? '🏃‍♂️' : '🚴‍♀️'}</span>
-          <span class="workout__value">${distance}</span>
-          <span class="workout__unit">km</span>
-        </div>
-        <div class="workout__details">
-          <span class="workout__icon">⏱</span>
-          <span class="workout__value">${duration}</span>
-          <span class="workout__unit">min</span>
-        </div>
-    `;
+        <li class="workout workout--${type}" data-id="${id}">
+          <div class="workout__title">
+            <p>${description}</p>
+          </div>
+          <div class="workout__controls">
+            <span class="workout__controls--option" data-action="edit">📝</span>
+            <span class="workout__controls--option" data-action="delete">🧺</span>
+          </div>
+          <div class="workout__details--location">
+            <span class="workout__icon">📍</span>
+            <span class="workout__value">${location}</span>
+          </div>
+          <div class="workout__details--temperature">
+            <span class="workout__icon">🌡</span>
+            <span class="workout__value">${temperature}</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">${
+              type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
+            }</span>
+            <span class="workout__value">${distance}</span>
+            <span class="workout__unit">km</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">⏱</span>
+            <span class="workout__value">${duration}</span>
+            <span class="workout__unit">min</span>
+          </div>
+      `;
 
       if (type === 'running') {
         html += `
-        <div class="workout__details">
-          <span class="workout__icon">⚡️</span>
-          <span class="workout__value">${pace.toFixed(1)}</span>
-          <span class="workout__unit">min/km</span>
-        </div>
-        <div class="workout__details">
-          <span class="workout__icon">🦶🏼</span>
-          <span class="workout__value">${cadence}</span>
-          <span class="workout__unit">spm</span>
-        </div>
-      `;
+          <div class="workout__details">
+            <span class="workout__icon">⚡️</span>
+            <span class="workout__value">${pace.toFixed(1)}</span>
+            <span class="workout__unit">min/km</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">🦶🏼</span>
+            <span class="workout__value">${cadence}</span>
+            <span class="workout__unit">spm</span>
+          </div>
+        `;
       }
 
       if (type === 'cycling') {
         html += `
-        <div class="workout__details">
-          <span class="workout__icon">⚡️</span>
-          <span class="workout__value">${speed.toFixed(1)}</span>
-          <span class="workout__unit">km/h</span>
-        </div>
-        <div class="workout__details">
-          <span class="workout__icon">⛰</span>
-          <span class="workout__value">${elevationGain}</span>
-          <span class="workout__unit">m</span>
-        </div>
-      `;
+          <div class="workout__details">
+            <span class="workout__icon">⚡️</span>
+            <span class="workout__value">${speed.toFixed(1)}</span>
+            <span class="workout__unit">km/h</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">⛰</span>
+            <span class="workout__value">${elevationGain}</span>
+            <span class="workout__unit">m</span>
+          </div>
+        `;
       }
 
       html += `
-        <div class="workout__action--confirmation">
-          <p class="workout__message workout__message--hidden" data-action="edit">
-            Do you want to edit the workout?
-            <span class="confirmation__answer" data-answer="yes">💹</span>
-            <span class="confirmation__answer" data-answer="no">❌</span>
-          </p>
-          <p class="workout__message workout__message--hidden" data-action="delete">
-            Do you want to delete the workout?
-            <span class="confirmation__answer" data-answer="yes">💹</span>
-            <span class="confirmation__answer" data-answer="no">❌</span>
-          </p>
-        </div>
-      </li>
-    `;
+          <div class="workout__action--confirmation">
+            <p class="workout__message workout__message--hidden" data-action="edit">
+              Do you want to edit the workout?
+              <span class="confirmation__answer" data-answer="yes">💹</span>
+              <span class="confirmation__answer" data-answer="no">❌</span>
+            </p>
+            <p class="workout__message workout__message--hidden" data-action="delete">
+              Do you want to delete the workout?
+              <span class="confirmation__answer" data-answer="yes">💹</span>
+              <span class="confirmation__answer" data-answer="no">❌</span>
+            </p>
+          </div>
+        </li>
+      `;
 
       form.insertAdjacentHTML('afterend', html);
     }
@@ -734,6 +790,105 @@
       location.reload();
     }
   }
+
+  const data = [
+    {
+      date: '2024-04-01T10:07:25.335Z',
+      id: '1966045335',
+      coords: [
+        { lat: 55.860670278069755, lng: 48.55874408618081 },
+        { lat: 55.860670278069755, lng: 48.55874408618081 },
+        { lat: 55.860670278069755, lng: 48.57046488860399 },
+        { lat: 55.860670278069755, lng: 48.57046488860399 },
+      ],
+      distance: 2,
+      duration: 2,
+      type: 'running',
+      cadence: 2,
+      pace: 1,
+      description: 'Running on April 1',
+      location: 'Zelenodolsk',
+      temperature: '+15°C',
+    },
+    {
+      date: '2024-04-09T16:03:02.038Z',
+      id: '2678582038',
+      coords: [
+        { lat: 55.85869530680905, lng: 48.56540679931641 },
+        { lat: 55.85662388762304, lng: 48.55995655059815 },
+        { lat: 55.85662388762304, lng: 48.55995655059815 },
+        { lat: 55.860983374049724, lng: 48.553862571716316 },
+        { lat: 55.860983374049724, lng: 48.553862571716316 },
+        { lat: 55.861465055245574, lng: 48.552188873291016 },
+        { lat: 55.861465055245574, lng: 48.552188873291016 },
+        { lat: 55.86531828981331, lng: 48.56098651885987 },
+        { lat: 55.86531828981331, lng: 48.56098651885987 },
+        { lat: 55.86016450231024, lng: 48.56815338134766 },
+        { lat: 55.86016450231024, lng: 48.56815338134766 },
+        { lat: 55.85881573476017, lng: 48.56540679931641 },
+      ],
+      distance: 62,
+      duration: 329,
+      type: 'running',
+      cadence: 292,
+      pace: 5.306451612903226,
+      description: 'Running on April 9',
+      location: 'Zelenodolsk',
+      temperature: '+20°C',
+    },
+    {
+      date: '2024-04-09T16:03:40.874Z',
+      id: '2678620874',
+      coords: [
+        { lat: 55.847614338321726, lng: 48.5309399694575 },
+        { lat: 55.85120395452979, lng: 48.531498067120665 },
+        { lat: 55.85120395452979, lng: 48.531498067120665 },
+        { lat: 55.85093896064062, lng: 48.539225573226354 },
+        { lat: 55.85093896064062, lng: 48.539225573226354 },
+        { lat: 55.85033669508177, lng: 48.540899866215916 },
+        { lat: 55.85033669508177, lng: 48.540899866215916 },
+        { lat: 55.84751796821633, lng: 48.54034176855275 },
+        { lat: 55.84751796821633, lng: 48.54034176855275 },
+        { lat: 55.847204763723646, lng: 48.53866747556318 },
+        { lat: 55.847204763723646, lng: 48.53866747556318 },
+        { lat: 55.84762638456811, lng: 48.5309228071311 },
+      ],
+      distance: 32,
+      duration: 32,
+      type: 'running',
+      cadence: 23,
+      pace: 1,
+      description: 'Running on April 9',
+      location: 'Zelenodolsk',
+      temperature: '+21°C',
+    },
+    {
+      date: '2024-04-09T16:05:13.632Z',
+      id: '2678713632',
+      coords: [
+        { lat: 55.85587718618677, lng: 48.53080785422723 },
+        { lat: 55.85142076636789, lng: 48.529949242437716 },
+        { lat: 55.85142076636789, lng: 48.529949242437716 },
+        { lat: 55.85221573275913, lng: 48.518701427995 },
+        { lat: 55.85221573275913, lng: 48.518701427995 },
+        { lat: 55.85590127355385, lng: 48.519602970373995 },
+        { lat: 55.85590127355385, lng: 48.519602970373995 },
+        { lat: 55.855612224163345, lng: 48.529992173027196 },
+        { lat: 55.855612224163345, lng: 48.529992173027196 },
+        { lat: 55.85587718618677, lng: 48.530764923637776 },
+      ],
+      distance: 72,
+      duration: 2718,
+      type: 'cycling',
+      elevationGain: 2718,
+      speed: 1.589403973509934,
+      description: 'Cycling on April 9',
+      location: 'Zelenodolsk',
+      temperature: '+23°C',
+    },
+  ];
+
+  // localStorage.setItem('workouts', JSON.stringify(data));
 
   const app = new App();
 })();

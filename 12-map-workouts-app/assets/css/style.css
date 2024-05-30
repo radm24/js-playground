@@ -104,6 +104,14 @@ a:visited {
   align-items: baseline;
 }
 
+.workout__details--location {
+  grid-column: 1 / 4;
+}
+
+.workout__details--temperature {
+  grid-column: -2 / -1;
+}
+
 .workout__icon {
   font-size: 1.8rem;
   margin-right: 0.2rem;
