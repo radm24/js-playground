@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>JS Playground</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JS Playground</h1>
+      <ol>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/guess-number/"
+            target="_blank"
+            >Guess Number
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/pig-game/"
+            target="_blank"
+            >Pig Game
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/quote-generator/"
+            target="_blank"
+            >Quote Generator
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/infinite-unsplash-gallery/"
+            target="_blank"
+            >Infinite Unsplash Generator
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/picture-in-picture/"
+            target="_blank"
+            >Picture-in-Picture
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/joke-teller/"
+            target="_blank"
+            >Joke Teller
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/light-dark-mode/"
+            target="_blank"
+            >Light / Dark Mode
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/animated-template/"
+            target="_blank"
+            >Animated Template
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/animated-navigation/"
+            target="_blank"
+            >Animated Navigation
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/music-player/"
+            target="_blank"
+            >Music Player
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/bank-transactions-playground/"
+            target="_blank"
+            >Bank Transactions Playground
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/map-workouts-app/"
+            target="_blank"
+            >Map Workouts App
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/react-simple-food-menu/"
+            target="_blank"
+            >React Simple Food Menu
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/react-travel-list/"
+            target="_blank"
+            >React Travel List
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/react-split-bill/"
+            target="_blank"
+            >React Split Bill
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/react-search-movies/"
+            target="_blank"
+            >React Search Movies
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/react-legacy-weather/"
+            target="_blank"
+            >React Legacy Weather
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://localhost/radikdeveloper/apps/js-playground/react-quiz/"
+            target="_blank"
+            >React Quiz
+          </a>
+        </li>
+      </ol>
+    </div>
+  </body>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+    :root {
+      --color-text: #fff;
+      --color-background: linear-gradient(to right bottom, #ffb88e, #ea5753);
+      --color-container: linear-gradient(
+        to right bottom,
+        rgb(255, 184, 142, 0.44),
+        rgba(255, 255, 255, 0.5)
+      );
+      --color-list: rgba(234, 87, 83, 0.7);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      display: grid;
+      font-size: 1.8rem;
+      place-items: center;
+      background: var(--color-background);
+      font-family: Rockwell, "Courier New", Courier, Georgia, Times,
+        "Times New Roman", serif;
+    }
+
+    .container {
+      width: 40vw;
+      padding: 3rem;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      position: relative;
+      border-radius: 3rem;
+      background: var(--color-container);
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+
+      &::before {
+        content: "";
+        top: -10rem;
+        left: -10rem;
+        width: 40rem;
+        height: 40rem;
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      &::after {
+        content: "";
+        bottom: 0rem;
+        right: -10rem;
+        width: 40rem;
+        height: 40rem;
+        margin-bottom: -25rem;
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 185, 142, 0.6);
+      }
+
+      /* Heading */
+      h1 {
+        top: 0;
+        padding: 6rem 0;
+        padding-top: 7rem;
+        position: sticky;
+        text-align: center;
+        color: var(--color-text);
+        margin-bottom: 3rem;
+        box-shadow: 0 7px 2rem #ea5753;
+        background: rgba(234, 87, 83, 0.7);
+      }
+
+      /* List  */
+      ol {
+        gap: 1rem;
+        display: flex;
+        list-style: none;
+        place-items: center;
+        flex-direction: column;
+        counter-reset: my-counter;
+
+        li {
+          width: 40rem;
+          text-align: center;
+          color: var(--color-text);
+          border-radius: 3rem;
+          background: var(--color-list);
+          z-index: 999;
+          transition: all 0.4s;
+
+          &:hover {
+            background-color: #ea5753;
+            cursor: pointer;
+          }
+
+          a {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            padding: 1.3rem 0;
+            counter-increment: my-counter;
+
+            &::before {
+              content: counter(my-counter) ". ";
+            }
+          }
+        }
+      }
+    }
+  </style>
+</html>
