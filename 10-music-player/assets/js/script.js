@@ -116,7 +116,7 @@
 
   // Fast-forward or rewind the track
   const setProgressBar = (e) => {
-    const progressContainerWidth = progressContainer.clientWidth;
+    const progressContainerWidth = e.currentTarget.clientWidth;
     const clickX = e.offsetX;
     audioEl.currentTime = audioEl.duration * (clickX / progressContainerWidth);
   };
