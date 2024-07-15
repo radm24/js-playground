@@ -615,7 +615,7 @@
       // Move to the workout marker
       const markerCoords = coords[0];
       this.#map.setView(markerCoords, this.#mapZoomLevel, {
-        animage: true,
+        animate: true,
         pan: {
           duration: 1,
         },
