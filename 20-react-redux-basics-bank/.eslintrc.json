@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:react/jsx-runtime",
+    "prettier"
+  ],
+  "parser": "",
+  "parserOptions": { "project": true, "tsconfigRootDir": "./" },
+  "plugins": [],
+  "root": true,
+  "ignorePatterns": ["dist"],
+  "rules": {},
+  "overrides": [
+    { "files": ["*.{c,m,}{t,j}s", "*.{t,j}sx"] },
+    { "files": ["*{test,spec}.{t,j}s?(x)"], "env": { "jest": true } }
+  ]
+}
