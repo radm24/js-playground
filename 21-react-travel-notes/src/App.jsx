@@ -18,7 +18,7 @@ const AppLayout = lazy(() => import("./pages/AppLayout/AppLayout"));
 const Login = lazy(() => import("./pages/Login/Login"));
 const Pricing = lazy(() => import("./pages/Pricing/Pricing"));
 const Product = lazy(() => import("./pages/Product/Product"));
-const PageNotFound = lazy(() => import("./pages/PageLayout/PageLayout"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
 const CityList = lazy(() => import("./components/CityList/CityList"));
 const CountryList = lazy(() => import("./components/CountryList/CountryList"));
 const City = lazy(() => import("./components/City/City"));
