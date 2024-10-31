@@ -1,0 +1,31 @@
+.tabsPanel {
+  margin-bottom: 2rem;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+    list-style-type: none;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  li {
+    flex-grow: 1;
+    border-radius: 9px;
+    background-color: #ececec;
+    font-weight: 500;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  li.active {
+    background-image: linear-gradient(to right bottom, #80dfe1, #4e7afa);
+    color: #fff;
+  }
+
+  li:hover {
+    background-color: #d4d4d4;
+  }
+}
