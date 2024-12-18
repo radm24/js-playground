@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Video Player</title>
+  </head>
+  <body>
+    <figure class="video-player">
+      <video id="video" controls playsinline>
+        <source
+          src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.webm"
+          type="video/webm"
+        />
+        <source
+          src="http://iandevlin.github.io/mdn/video-player/video/tears-of-steel-battle-clip-medium.ogg"
+          type="video/ogg"
+        />
+      </video>
+
+      <div class="video-controls hidden">
+        <div>
+          <button id="play">
+            <svg class="icon">
+              <use href="./assets/img/icons.svg#play" />
+            </svg>
+          </button>
+          <button id="pause" class="hidden">
+            <svg class="icon">
+              <use href="./assets/img/icons.svg#pause" />
+            </svg>
+          </button>
+        </div>
+
+        <p>
+          <span id="current-time">00:00</span>
+          <strong>/</strong>
+          <span id="duration">00:00</span>
+        </p>
+        <progress id="progress" min="0" value="0"></progress>
+
+        <div class="volume-container">
+          <button id="mute">
+            <svg class="icon">
+              <use href="./assets/img/icons.svg#volume" />
+            </svg>
+          </button>
+          <button id="unmute" class="hidden">
+            <svg class="icon">
+              <use href="./assets/img/icons.svg#muted" />
+            </svg>
+          </button>
+          <input id="volume" type="range" min="0" max="1" step="0.01" />
+        </div>
+
+        <div class="options-container">
+          <select id="speed">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="1" selected>1.0x</option>
+            <option value="1.25">1.25x</option>
+            <option value="1.5">1.5x</option>
+            <option value="1.75">1.75x</option>
+            <option value="2">2.0x</option>
+          </select>
+
+          <div id="pip-controls">
+            <button id="pip-enter">
+              <svg class="icon">
+                <use href="./assets/img/icons.svg#pip-enter" />
+              </svg>
+            </button>
+            <button id="pip-exit" class="hidden">
+              <svg class="icon">
+                <use href="./assets/img/icons.svg#pip-exit" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button id="fullscreen">
+          <svg class="icon">
+            <use href="./assets/img/icons.svg#maximize" />
+          </svg>
+        </button>
+      </div>
+    </figure>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

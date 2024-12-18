@@ -1,0 +1,32 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="play" viewBox="0 0 24 24">
+    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+</symbol>
+<symbol id="pause" viewBox="0 0 24 24">
+    <rect x="6" y="4" width="4" height="16"></rect>
+    <rect x="14" y="4" width="4" height="16"></rect>
+</symbol>
+<symbol id="volume" viewBox="0 0 24 24">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+</symbol>
+<symbol id="muted" viewBox="0 0 24 24">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+    <line x1="23" y1="9" x2="17" y2="15"></line>
+    <line x1="17" y1="9" x2="23" y2="15"></line>
+</symbol>
+<symbol id="maximize" viewBox="0 0 24 24">
+    <polyline points="15 3 21 3 21 9"></polyline>
+    <polyline points="9 21 3 21 3 15"></polyline>
+    <line x1="21" y1="3" x2="14" y2="10"></line>
+    <line x1="3" y1="21" x2="10" y2="14"></line>
+</symbol>
+<symbol id="pip-enter" viewBox="23.9 47.9 208.2 160.2">
+    <path d="M216,48H40A16.01833,16.01833,0,0,0,24,64V192a16.01833,16.01833,0,0,0,16,16H216a16.01833,16.01833,0,0,0,16-16V64A16.01833,16.01833,0,0,0,216,48Zm-72,72a16.01833,16.01833,0,0,0-16,16v56H40V64H216l.00439,56Z"/>    
+</symbol>
+<symbol id="pip-exit" viewBox="-0.1 -0.1 384.2 298.9">
+    <path d="M384,1.42108547e-14 L384,298.666667 L213.333,298.666 L170.666,298.666 L1.42108547e-14,298.666667 L1.42108547e-14,1.42108547e-14 L384,1.42108547e-14 Z M341.333333,42.6666667 L42.6666667,42.6666667 L42.6666667,256 L341.333333,256 L341.333333,42.6666667 Z M320,64 L320,234.666667 L64,234.666667 L64,64 L320,64 Z" />
+</symbol>
+</defs>
+</svg>

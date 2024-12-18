@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@200..800&family=Nunito:wght@200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Bookmarks Keeper</title>
+  </head>
+  <body>
+    <!-- Tiles Container -->
+    <div class="container">
+      <div class="tile tile--add" role="button">
+        <span class="add-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.75 12H20.25"
+              stroke="#6D7F90"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 3.75V20.25"
+              stroke="#6D7F90"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay--modal hidden"></div>
+    <div class="overlay--menu hidden"></div>
+
+    <!-- Add Bookmark Modal -->
+    <div class="modal hidden">
+      <button class="btn btn--close">&times;</button>
+      <form class="form">
+        <div class="modal__heading">
+          <h3>Add Bookmark</h3>
+        </div>
+        <div>
+          <label for="name">Website Name</label>
+          <input id="name" name="name" required />
+        </div>
+        <div>
+          <label for="url">Website URL</label>
+          <input id="url" name="url" required />
+        </div>
+        <div class="modal__controls">
+          <button class="btn btn--save">Save</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Context menu -->
+    <div class="context-menu hidden">
+      <ul class="context-menu__list">
+        <li class="context-menu__list-item btn--edit" role="button">
+          <span>Edit</span>
+        </li>
+        <li class="context-menu__list-item btn--delete" role="button">
+          <span">Delete</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

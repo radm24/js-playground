@@ -1,0 +1,226 @@
+:root {
+  --color: #ebecf3;
+  --background-color-dark: #a7a8ac;
+  --background-color-light: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('../img/cinema.jpg');
+  background-position: 55% 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: none;
+  outline: none;
+  background: 0 0;
+  cursor: pointer;
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--background-color-dark);
+  stroke: var(--background-color-dark);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.video-player {
+  width: 70vw;
+  min-width: 80rem;
+  border: 2px solid #000;
+  position: relative;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+.fullscreen video {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.video-controls {
+  background-color: rgb(12, 18, 24, 0.7);
+  color: var(--color);
+  font-size: 1.6rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.fullscreen .video-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: all 0.5s ease-out 5s;
+}
+
+.fullscreen .video-controls:hover {
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.video-controls span,
+progress {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+progress {
+  border: none;
+  border-radius: 2px;
+  background-color: var(--background-color-dark);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+progress#progress {
+  flex-grow: 1;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--background-color-dark);
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--background-color-light);
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--background-color-light);
+}
+
+.volume-container,
+.options-container {
+  display: flex;
+  align-content: center;
+}
+
+.volume-container {
+  gap: 1rem;
+}
+
+/* Volume Slider */
+input#volume {
+  width: 8rem;
+  overflow: hidden;
+  appearance: none;
+  background-color: var(--background-color-dark);
+  opacity: 0.8;
+}
+
+/* Chrome */
+input#volume::-webkit-slider-thumb {
+  width: 1px;
+  height: 1.6rem;
+  appearance: none;
+  cursor: pointer;
+  background-color: var(--background-color-light);
+  box-shadow: -8rem 0 0 8rem var(--background-color-light);
+  transform: translateX(-1px);
+}
+
+/* FF */
+input#volume::-moz-range-thumb {
+  width: 1px;
+  height: 1.6rem;
+  appearance: none;
+  cursor: pointer;
+  background-color: var(--background-color-light);
+  box-shadow: -8rem 0 0 8rem var(--background-color-light);
+}
+
+input#volume::-moz-range-progress {
+  background-color: var(--background-color-light);
+}
+
+input#volume::-moz-range-track {
+  background-color: var(--background-color-dark);
+}
+
+.hidden {
+  display: none;
+}
+
+#speed {
+  appearance: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+#speed > option {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#pip-enter,
+#pip-exit {
+  transform: translateY(2px);
+}
+
+@media screen and (max-width: 50rem) {
+  html {
+    font-size: 50%;
+  }
+
+  .video-player {
+    width: 100vw;
+    min-width: unset;
+  }
+
+  .video-controls {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 31em) {
+  .video-controls {
+    display: grid;
+    grid-template-columns: min-content 1fr repeat(3, min-content);
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  #progress {
+    grid-column: 1 / -1;
+    order: -1;
+    width: 100%;
+  }
+}
