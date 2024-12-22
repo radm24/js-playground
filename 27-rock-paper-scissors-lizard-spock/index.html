@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- tsParticles Confetti -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"
+    ></script>
+
+    <title>Rock Paper Scissors Lizard Spock</title>
+  </head>
+  <body>
+    <div class="game">
+      <header><h1>Rock Paper Scissors Lizard Spock</h1></header>
+      <div class="field">
+        <div class="player">
+          <h2>
+            You - <span id="player-score">0</span>
+            <span id="player-choice" class="hidden"></span>
+          </h2>
+          <div class="signs">
+            <i
+              id="player-rock"
+              class="fa-regular fa-hand-rock"
+              role="button"
+            ></i>
+            <i
+              id="player-paper"
+              class="fa-regular fa-hand-paper"
+              role="button"
+            ></i>
+            <i
+              id="player-scissors"
+              class="fa-regular fa-hand-scissors"
+              role="button"
+            ></i>
+            <i
+              id="player-lizard"
+              class="fa-regular fa-hand-lizard"
+              role="button"
+            ></i>
+            <i
+              id="player-spock"
+              class="fa-regular fa-hand-spock"
+              role="button"
+            ></i>
+          </div>
+        </div>
+        <div class="computer">
+          <h2>
+            Computer - <span id="computer-score">0</span>
+            <span id="computer-choice" class="hidden"></span>
+          </h2>
+          <div class="signs">
+            <i
+              id="computer-rock"
+              class="fa-regular fa-hand-rock"
+              role="button"
+            ></i>
+            <i
+              id="computer-paper"
+              class="fa-regular fa-hand-paper"
+              role="button"
+            ></i>
+            <i
+              id="computer-scissors"
+              class="fa-regular fa-hand-scissors"
+              role="button"
+            ></i>
+            <i
+              id="computer-lizard"
+              class="fa-regular fa-hand-lizard"
+              role="button"
+            ></i>
+            <i
+              id="computer-spock"
+              class="fa-regular fa-hand-spock"
+              role="button"
+            ></i>
+          </div>
+        </div>
+        <i id="btn-reset" class="fa-solid fa-rotate reset" role="button"></i>
+        <div class="result-container">
+          <h3 class="result-text"></h3>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: Lato, sans-serif;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  background-color: dodgerblue;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3.5rem 1.5rem;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.field {
+  padding: 5rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.player,
+.computer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.player h2,
+.computer h2 {
+  font-size: 2.4rem;
+}
+
+.signs {
+  display: flex;
+  gap: 5rem;
+}
+
+.signs > * {
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+#player-choice,
+.player .signs > * {
+  color: dodgerblue;
+}
+
+#computer-choice,
+.computer .signs > * {
+  color: rgb(235, 43, 52);
+}
+
+.player .signs .selected,
+.computer .signs .selected {
+  color: #000;
+}
+
+.reset {
+  margin-top: 1rem;
+  align-self: flex-start;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.result-container {
+  height: 4.6rem;
+}
+
+.result-text {
+  font-size: 3.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 36em) {
+  html {
+    font-size: 50%;
+  }
+
+  .signs {
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 24em) {
+  .field {
+    padding: 1rem 0;
+  }
+
+  #btn-reset {
+    margin-left: 10%;
+  }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=PT+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Math Sprint Game</title>
+  </head>
+  <body>
+    <div class="game">
+      <header>
+        <h1>Math Sprint Game</h1>
+      </header>
+      <main class="game__field">
+        <!-- Start Page -->
+        <form class="start__form">
+          <ul class="start__options">
+            <li class="start__option start__option--selected">
+              <input
+                type="radio"
+                id="10"
+                name="numQuestions"
+                value="10"
+                checked
+                autocomplete="off"
+              />
+              <label for="10">10 Questions</label>
+              <div class="highscore">
+                <span>Best Score</span>
+                <span class="highscore__value">0.0s</span>
+              </div>
+            </li>
+            <li class="start__option">
+              <input
+                type="radio"
+                id="25"
+                name="numQuestions"
+                value="25"
+                autocomplete="off"
+              />
+              <label for="25">25 Questions</label>
+              <div class="highscore">
+                <span>Best Score</span>
+                <span class="highscore__value">0.0s</span>
+              </div>
+            </li>
+            <li class="start__option">
+              <input
+                type="radio"
+                id="50"
+                name="numQuestions"
+                value="50"
+                autocomplete="off"
+              />
+              <label for="50">50 Questions</label>
+              <div class="highscore">
+                <span>Best Score</span>
+                <span class="highscore__value">0.0s</span>
+              </div>
+            </li>
+            <li class="start__option">
+              <input
+                type="radio"
+                id="99"
+                name="numQuestions"
+                value="99"
+                autocomplete="off"
+              />
+              <label for="99">99 Questions</label>
+              <div class="highscore">
+                <span>Best Score</span>
+                <span class="highscore__value">0.0s</span>
+              </div>
+            </li>
+          </ul>
+          <footer class="start__footer">
+            <button class="btn btn--start">Start Round</button>
+          </footer>
+        </form>
+
+        <!-- Countdown Page -->
+        <div class="countdown hidden">
+          <p class="countdown__text">3</p>
+        </div>
+
+        <!-- Game Page -->
+        <div class="quiz hidden">
+          <ul class="quiz__list"></ul>
+          <footer class="quiz__footer">
+            <button class="btn btn--wrong">Wrong</button>
+            <button class="btn btn--right">Right</button>
+          </footer>
+        </div>
+
+        <!-- Score Page -->
+        <div class="score-page hidden">
+          <h1 class="score__title">Your Time</h1>
+          <p class="score__final-time">
+            <span id="final-time-value">0.0s</span>
+          </p>
+          <h2 class="score__base-time">
+            Base Time: <span id="base-time-value">0.0s</span>
+          </h2>
+          <h2 class="score__penalty-time">
+            Penalty: +<span id="penalty-time-value">0.0s</span>
+          </h2>
+          <footer class="score__footer">
+            <button class="btn btn--reset">Play Again</button>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

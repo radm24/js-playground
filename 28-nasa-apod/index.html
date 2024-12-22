@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://s2.googleusercontent.com/s2/favicons?domain=www.nasa.gov"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>NASA APOD</title>
+  </head>
+  <body>
+    <div class="loader hidden">
+      <img src="./assets/img/spaceship.gif" alt="Rocket Loading Animation" />
+    </div>
+
+    <div class="container">
+      <nav data-page="results">
+        <ul>
+          <li>
+            <span id="btn-favorites" class="clickable" role="button"
+              >Favorites</span
+            >
+          </li>
+          <li>
+            <span>&bull;</span>
+          </li>
+          <li>
+            <span id="btn-load" class="clickable" role="button">Load More</span>
+          </li>
+        </ul>
+        <p id="btn-results" class="clickable">Load More NASA Images</p>
+      </nav>
+      <main class="cards"></main>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
