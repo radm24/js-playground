@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Eisenhower Matrix</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h4>&ZeroWidthSpace;</h4>
+        <span
+          id="btnCompletedTasks"
+          class="btn--switch"
+          role="button"
+          title="Show completed tasks"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path
+              d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+            ></path>
+          </svg>
+        </span>
+        <span
+          id="btnActiveTasks"
+          class="btn--switch hidden"
+          role="button"
+          title="Show active tasks"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          </svg>
+        </span>
+      </header>
+
+      <!-- Active Tasks -->
+      <section class="active-tasks">
+        <h2>Not Important</h2>
+        <h2 class="sm-order-1 xs-order-3">Important</h2>
+        <h3>Not Urgent</h3>
+        <h3 class="xs-order-2">Urgent</h3>
+        <h3 class="sm-order-1 xs-order-3">Not Urgent</h3>
+        <h3 class="sm-order-1 xs-order-4">Urgent</h3>
+        <div class="list-wrapper">
+          <ul id="active-ninu" class="list"></ul>
+          <input id="newTask" name="newTask" />
+          <button class="btn btn--add">+</button>
+        </div>
+        <div class="list-wrapper xs-order-2">
+          <ul id="active-niu" class="list"></ul>
+          <input id="newTask" name="newTask" />
+          <button class="btn btn--add">+</button>
+        </div>
+        <div class="list-wrapper sm-order-1 xs-order-3">
+          <ul id="active-inu" class="list"></ul>
+          <input id="newTask" name="newTask" />
+          <button class="btn btn--add">+</button>
+        </div>
+        <div class="list-wrapper sm-order-1 xs-order-4">
+          <ul id="active-iu" class="list"></ul>
+          <input id="newTask" name="newTask" />
+          <button class="btn btn--add">+</button>
+        </div>
+      </section>
+
+      <!-- Completed Tasks -->
+      <section class="completed-tasks hidden">
+        <h2>Not Important</h2>
+        <h2 class="sm-order-1 xs-order-3">Important</h2>
+        <h3>Not Urgent</h3>
+        <h3 class="xs-order-2">Urgent</h3>
+        <h3 class="sm-order-1 xs-order-3">Not Urgent</h3>
+        <h3 class="sm-order-1 xs-order-4">Urgent</h3>
+        <div class="list-wrapper">
+          <ul id="completed-ninu" class="list"></ul>
+        </div>
+        <div class="list-wrapper xs-order-2">
+          <ul id="completed-niu" class="list"></ul>
+        </div>
+        <div class="list-wrapper sm-order-1 xs-order-3">
+          <ul id="completed-inu" class="list"></ul>
+        </div>
+        <div class="list-wrapper sm-order-1 xs-order-4">
+          <ul id="completed-iu" class="list"></ul>
+        </div>
+      </section>
+      <footer class="task-controls hidden">
+        <div class="complete-zone">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="checkMark"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="delete-zone">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="trashBin"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path
+              d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+            ></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

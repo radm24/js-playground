@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230074ff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+canvas {
+  margin-top: 3rem;
+  background: linear-gradient(
+    to bottom,
+    #003280 50%,
+    #003280 49%,
+    #0064ff 50%,
+    #0064ff 100%
+  );
+  border: 3px solid black;
+  cursor: none;
+}
+
+.game-over {
+  width: 50rem;
+  height: 70rem;
+  margin: 3rem auto 0;
+  background-color: #89abe3;
+  font-size: 1.6rem;
+  color: #fcf6f5;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn-restart {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #335b99;
+  color: #fcf6f5;
+  font-size: 2rem;
+  font-family: inherit;
+  padding: 1.25rem 3.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.btn-restart:hover {
+  filter: brightness(110%);
+}
+
+.hidden {
+  display: none;
+}
