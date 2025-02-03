@@ -126,7 +126,7 @@
       inputType.addEventListener('change', this.#toggleElevationField);
       containerWorkouts.addEventListener(
         'click',
-        this.#handleWorkoutAction.bind(this)
+        this.#handleWorkoutAction.bind(this),
       );
       inputSort.addEventListener('change', this.sort.bind(this));
       btnClear.addEventListener('click', this.reset);
@@ -138,7 +138,7 @@
           this.#loadMap.bind(this),
           () => {
             alert('Could not get your position!');
-          }
+          },
         );
       }
     }
@@ -149,10 +149,10 @@
 
       this.#map = L.map('map').setView(
         [latitude, longitude],
-        this.#mapZoomLevel
+        this.#mapZoomLevel,
       );
 
-      L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(this.#map);
@@ -241,7 +241,7 @@
           // Create DOM elements
           const container = L.DomUtil.create(
             'div',
-            'leaflet-bar leaflet-control'
+            'leaflet-bar leaflet-control',
           );
           const button = L.DomUtil.create('a', className, container);
 
@@ -255,7 +255,7 @@
 
           // Attach event listeners to the button
           eventHandlers.forEach(({ type, fn }) =>
-            L.DomEvent.on(button, type, fn)
+            L.DomEvent.on(button, type, fn),
           );
 
           return container;
@@ -274,7 +274,7 @@
       // Cancel workout entry editing
       // Reset background color of active workout entry
       const bgColor = getComputedStyle(document.body).getPropertyValue(
-        '--color-dark--2'
+        '--color-dark--2',
       );
       this.#workoutAction.workoutEl.style.backgroundColor = bgColor;
 
@@ -346,7 +346,7 @@
         !validInputs(
           distance,
           duration,
-          type === 'running' ? cadence : elevationGain
+          type === 'running' ? cadence : elevationGain,
         )
       ) {
         return this.#displayFormErrorMessage(true);
@@ -375,7 +375,7 @@
         // If workout is cycling, create cycling object
         const workout = new (data.type === 'running' ? Running : Cycling)(
           this.#newWorkoutCoords,
-          data
+          data,
         );
         this.#newWorkoutCoords = null;
 
@@ -424,7 +424,7 @@
 
     #renderWorkoutMarker(
       { id, coords, type, description },
-      renderPath = false
+      renderPath = false,
     ) {
       // Create workout path and marker layers
       const path = L.polyline(coords);
@@ -452,14 +452,14 @@
             closeOnClick: false,
             content: `${type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${description}`,
             className: `${type}-popup`,
-          })
+          }),
         )
         .openPopup();
     }
 
     #handleMarkerClick(e) {
       const idx = this.#workoutsLayers.findIndex(
-        ({ marker }) => marker === e.target
+        ({ marker }) => marker === e.target,
       );
       const coords = this.#workouts[idx].coords;
       const path = this.#workoutsLayers[idx].path;
@@ -569,7 +569,7 @@
       if (messageElVisible) return;
 
       const workoutIdx = this.#workouts.findIndex(
-        (workout) => workout.id === workoutEl.dataset.id
+        (workout) => workout.id === workoutEl.dataset.id,
       );
       const workout = this.#workouts[workoutIdx];
       const workoutLayers = this.#workoutsLayers[workoutIdx];
@@ -605,7 +605,7 @@
       document.body.addEventListener(
         'click',
         this.#handleWorkoutActionConfirmation.bind(this),
-        { capture: true, once: true }
+        { capture: true, once: true },
       );
     }
 
@@ -667,7 +667,7 @@
 
       // Change background color of active workout entry
       const bgColor = getComputedStyle(document.body).getPropertyValue(
-        '--color-dark--3'
+        '--color-dark--3',
       );
       workoutEl.style.backgroundColor = bgColor;
 
@@ -720,7 +720,7 @@
       data.forEach((workout) => {
         const revivedObj = new (workout.type === 'running' ? Running : Cycling)(
           [...workout.coords],
-          { ...workout }
+          { ...workout },
         );
         Object.assign(revivedObj, workout);
         workouts.push(revivedObj);
@@ -737,7 +737,7 @@
       if (!this.#workoutsLayers.length) return;
 
       const markersCoords = this.#workoutsLayers.map((workout) =>
-        workout.marker.getLatLng()
+        workout.marker.getLatLng(),
       );
       const bounds = L.latLngBounds(markersCoords).pad(0.1);
       this.#map.fitBounds(bounds);
